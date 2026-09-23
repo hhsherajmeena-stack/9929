@@ -334,10 +334,23 @@
                 <button class="cart-btn" onclick="openOrderModal('Premium Art Showpiece', 1499)">Order Now</button>
             </div>
 
-            <!-- Product 5 -->
+            <!-- Product 5 (With Multi-Photo Slider containing your new photos) -->
             <div class="product-card">
                 <span class="badge">Extra 70% OFF</span>
-                <div class="img-box"><img src="https://i.ibb.co/BHkttKMS/image-137b876c-1.jpg" alt="Exclusive Decor Item" class="active"></div>
+                <div class="img-box" id="sliderBox5">
+                    <!-- Original Photo 5 -->
+                    <img src="https://i.ibb.co/BHkttKMS/image-137b876c-1.jpg" alt="Exclusive Decor Item" class="active">
+                    <!-- Your 5 New Photos Added -->
+                    <img src="https://i.ibb.co/QvCZF5bP/71jnq-hq-WL-AC-UF894-1000-QL80.jpg" alt="Product View 2">
+                    <img src="https://i.ibb.co/C3Mvg5dR/Screenshot-20260924-012500-Instagram.jpg" alt="Product View 3">
+                    <img src="https://i.ibb.co/XZGZR0c3/Screenshot-20260924-012640-Instagram.jpg" alt="Product View 4">
+                    <img src="https://i.ibb.co/R5Ty456/61l-TMKw3-Yw-L-AC-UF894-1000-QL80.jpg" alt="Product View 5">
+                    <img src="https://i.ibb.co/9Hs8B9qx/61-awe-Qj-JTL-AC-UF894-1000-QL80.jpg" alt="Product View 6">
+                    
+                    <!-- Slider Navigation Buttons -->
+                    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+                </div>
                 <h3>Exclusive Handicraft Figurine</h3>
                 <div class="price-box">
                     <span class="current-price">₹1,799</span>
@@ -347,22 +360,10 @@
                 <button class="cart-btn" onclick="openOrderModal('Exclusive Handicraft Figurine', 1799)">Order Now</button>
             </div>
 
-            <!-- Product 6 (With Multi-Photo Slider including your 4 new images) -->
+            <!-- Product 6 -->
             <div class="product-card">
                 <span class="badge">Extra 70% OFF</span>
-                <div class="img-box" id="sliderBox">
-                    <!-- Original Photo -->
-                    <img src="https://i.ibb.co/5WrKWJW9/b8sd-Fmmn-9afed7d22c914579a4bb6e1a8aeb5ccb.webp" alt="Designer Home Decor" class="active">
-                    <!-- Your 4 New Photos added as slider items -->
-                    <img src="https://i.ibb.co/LGbVC6Y/Screenshot-20260923-200710-Instagram.jpg" alt="Product View 2">
-                    <img src="https://i.ibb.co/4nv0q1pc/Screenshot-20260923-200738-Instagram.jpg" alt="Product View 3">
-                    <img src="https://i.ibb.co/RkV53Dpd/Screenshot-20260923-200742-Instagram.jpg" alt="Product View 4">
-                    <img src="https://i.ibb.co/DDrSTvYF/Screenshot-20260923-200754-Instagram.jpg" alt="Product View 5">
-                    
-                    <!-- Slider Navigation Buttons -->
-                    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-                    <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
-                </div>
+                <div class="img-box"><img src="https://i.ibb.co/5WrKWJW9/b8sd-Fmmn-9afed7d22c914579a4bb6e1a8aeb5ccb.webp" alt="Designer Home Decor" class="active"></div>
                 <h3>Designer Home Decor Item</h3>
                 <div class="price-box">
                     <span class="current-price">₹1,299</span>
@@ -431,10 +432,10 @@
         let selectedPrice = 0;
         const merchantUpiId = "8955550232@fam";
 
-        // Image Slider Logic for Product 6
+        // Image Slider Logic for Product 5
         let currentSlideIndex = 0;
         function changeSlide(direction) {
-            const sliderBox = document.getElementById('sliderBox');
+            const sliderBox = document.getElementById('sliderBox5');
             const slides = sliderBox.getElementsByTagName('img');
             
             slides[currentSlideIndex].classList.remove('active');
@@ -502,3 +503,4 @@
 
 </body>
 </html>
+ 
