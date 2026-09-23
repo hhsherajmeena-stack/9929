@@ -428,12 +428,12 @@
                 return;
             }
 
-            // Generate UPI payment intent links
-            const upiLink = `upi://pay?pa=${8955550232@fam}&pn=Swaba%20Handicraft&am=${selectedPrice}&cu=INR`;
+            // Generate UPI payment intent links correctly
+            const upiLink = `upi://pay?pa=${merchantUpiId}&pn=Swaba%20Handicraft&am=${selectedPrice}&cu=INR`;
             
-            document.getElementById('gpayBtn').href = upiLink;8955550232@fam
-            document.getElementById('phonepeBtn').href = upiLink;8955550232@fam
-            document.getElementById('paytmBtn').href = upiLink;8955550232@fam
+            document.getElementById('gpayBtn').href = upiLink;
+            document.getElementById('phonepeBtn').href = upiLink;
+            document.getElementById('paytmBtn').href = upiLink;
 
             // Switch view to payment options
             document.getElementById('formSection').style.display = 'none';
