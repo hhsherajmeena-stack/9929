@@ -127,6 +127,7 @@
             cursor: pointer;
             font-size: 14px;
             border-radius: 3px;
+            z-index: 10;
         }
         .prev-btn { left: 5px; }
         .next-btn { right: 5px; }
@@ -282,10 +283,21 @@
         <p>Choose your favorite luxury pieces at the best value. <a href="https://wa.me/918955550232?text=Hello%20Swaba%20Handicraft" target="_blank" style="color: #25D366; font-weight: bold; text-decoration: none;">Chat on WhatsApp</a></p>
         
         <div class="product-grid">
-            <!-- Product 1 -->
+            <!-- Product 1 (Updated with your 6 new screenshots and slider) -->
             <div class="product-card">
                 <span class="badge">Extra 70% OFF</span>
-                <div class="img-box"><img src="https://i.ibb.co/PkqBKQR/915f5-G4-BQ2-L-AC-UF894-1000-QL80.jpg" alt="Luxury Handicraft Item 1" class="active"></div>
+                <div class="img-box" id="sliderBox1">
+                    <img src="https://i.ibb.co/xq38SVF3/Screenshot-20260925-001959-Instagram.jpg" alt="Luxury Handicraft Item 1" class="active">
+                    <img src="https://i.ibb.co/JM57C8S/Screenshot-20260925-002020-Instagram.jpg" alt="Luxury Handicraft Item 2">
+                    <img src="https://i.ibb.co/VW07gdyd/Screenshot-20260925-002025-Instagram.jpg" alt="Luxury Handicraft Item 3">
+                    <img src="https://i.ibb.co/Jjy8G6R8/Screenshot-20260925-002029-Instagram.jpg" alt="Luxury Handicraft Item 4">
+                    <img src="https://i.ibb.co/CkHLxsX/Screenshot-20260925-002037-Instagram.jpg" alt="Luxury Handicraft Item 5">
+                    <img src="https://i.ibb.co/PG1hzNPZ/Screenshot-20260925-002040-Instagram.jpg" alt="Luxury Handicraft Item 6">
+                    
+                    <!-- Slider Navigation Buttons -->
+                    <button class="slider-btn prev-btn" onclick="changeSlide('sliderBox1', -1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('sliderBox1', 1)">&#10095;</button>
+                </div>
                 <h3>Luxury Handicraft Decor 1</h3>
                 <div class="price-box">
                     <span class="current-price">₹1,999</span>
@@ -334,13 +346,11 @@
                 <button class="cart-btn" onclick="openOrderModal('Premium Art Showpiece', 1499)">Order Now</button>
             </div>
 
-            <!-- Product 5 (With Multi-Photo Slider containing your new photos) -->
+            <!-- Product 5 (With Multi-Photo Slider) -->
             <div class="product-card">
                 <span class="badge">Extra 70% OFF</span>
                 <div class="img-box" id="sliderBox5">
-                    <!-- Original Photo 5 -->
                     <img src="https://i.ibb.co/BHkttKMS/image-137b876c-1.jpg" alt="Exclusive Decor Item" class="active">
-                    <!-- Your 5 New Photos Added -->
                     <img src="https://i.ibb.co/QvCZF5bP/71jnq-hq-WL-AC-UF894-1000-QL80.jpg" alt="Product View 2">
                     <img src="https://i.ibb.co/C3Mvg5dR/Screenshot-20260924-012500-Instagram.jpg" alt="Product View 3">
                     <img src="https://i.ibb.co/XZGZR0c3/Screenshot-20260924-012640-Instagram.jpg" alt="Product View 4">
@@ -348,8 +358,8 @@
                     <img src="https://i.ibb.co/9Hs8B9qx/61-awe-Qj-JTL-AC-UF894-1000-QL80.jpg" alt="Product View 6">
                     
                     <!-- Slider Navigation Buttons -->
-                    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-                    <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('sliderBox5', -1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('sliderBox5', 1)">&#10095;</button>
                 </div>
                 <h3>Exclusive Handicraft Figurine</h3>
                 <div class="price-box">
@@ -432,22 +442,26 @@
         let selectedPrice = 0;
         const merchantUpiId = "8955550232@fam";
 
-        // Image Slider Logic for Product 5
-        let currentSlideIndex = 0;
-        function changeSlide(direction) {
-            const sliderBox = document.getElementById('sliderBox5');
+        // Universal Image Slider Logic for multiple sliders
+        const slideIndices = {
+            'sliderBox1': 0,
+            'sliderBox5': 0
+        };
+
+        function changeSlide(sliderId, direction) {
+            const sliderBox = document.getElementById(sliderId);
             const slides = sliderBox.getElementsByTagName('img');
             
-            slides[currentSlideIndex].classList.remove('active');
+            slides[slideIndices[sliderId]].classList.remove('active');
             
-            currentSlideIndex += direction;
-            if (currentSlideIndex >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = slides.length - 1;
+            slideIndices[sliderId] += direction;
+            if (slideIndices[sliderId] >= slides.length) {
+                slideIndices[sliderId] = 0;
+            } else if (slideIndices[sliderId] < 0) {
+                slideIndices[sliderId] = slides.length - 1;
             }
             
-            slides[currentSlideIndex].classList.add('active');
+            slides[slideIndices[sliderId]].classList.add('active');
         }
 
         function openOrderModal(productName, price) {
@@ -503,4 +517,4 @@
 
 </body>
 </html>
- 
+
